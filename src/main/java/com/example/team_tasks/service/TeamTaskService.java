@@ -1,5 +1,6 @@
 package com.example.team_tasks.service;
 
+import com.example.team_tasks.model.Priorities;
 import com.example.team_tasks.model.TaskStatus;
 import com.example.team_tasks.model.task.TeamTask;
 import com.example.team_tasks.model.user.UpdateTaskStatusDTO;
@@ -32,7 +33,7 @@ public class TeamTaskService {
        TeamTask teamTask = teamTaskRepository.findById(id).orElseThrow(() -> new RuntimeException("TeamTask not found for id: " + id));
        teamTask.setTitle(taskDetails.getTitle());
        teamTask.setDescription(taskDetails.getDescription());
-       teamTask.setCompleted(taskDetails.isCompleted());
+
 
        return teamTaskRepository.save(teamTask);
     }
@@ -50,4 +51,12 @@ public class TeamTaskService {
         teamTask.setStatus(status);
         return teamTaskRepository.save(teamTask);
     }
+
+    public TeamTask setPriorities(Long id, Priorities priorities) {
+        TeamTask teamTask = teamTaskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
+        teamTask.setPriorities(priorities);
+        return teamTaskRepository.save(teamTask);
+    }
+
+
 }

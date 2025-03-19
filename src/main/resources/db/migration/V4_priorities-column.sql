@@ -1,0 +1,1 @@
+ALTER TABLE team_task ADD COLUMN priorities VARCHAR(255) NOT NULL;

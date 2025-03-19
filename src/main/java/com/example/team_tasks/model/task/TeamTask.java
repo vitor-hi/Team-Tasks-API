@@ -1,5 +1,6 @@
 package com.example.team_tasks.model.task;
 
+import com.example.team_tasks.model.Priorities;
 import com.example.team_tasks.model.TaskStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,7 +19,8 @@ public class TeamTask {
     private Long id;
     private String title;
     private String description;
-    private boolean completed;
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
+    @Enumerated(EnumType.STRING)
+    private Priorities priorities;
 }

@@ -1,6 +1,7 @@
 package com.example.team_tasks.controller;
 
 import com.example.team_tasks.model.task.TeamTask;
+import com.example.team_tasks.model.user.PrioritiesDTO;
 import com.example.team_tasks.model.user.UpdateTaskStatusDTO;
 import com.example.team_tasks.service.TeamTaskService;
 import jakarta.validation.Valid;
@@ -50,5 +51,11 @@ public class TeamTaskController {
         TeamTask updatedStatus = teamTaskService.updateTaskStatus(id, statusDTO.getStatus());
         return ResponseEntity.ok(updatedStatus);
 
+    }
+
+    @PutMapping("/{id}/priorities")
+    public ResponseEntity<TeamTask> setPriorities(@PathVariable Long id, @RequestBody @Valid PrioritiesDTO prioritiesDTO) {
+        TeamTask priorities = teamTaskService.setPriorities(id, prioritiesDTO.getPriorities());
+        return ResponseEntity.ok(priorities);
     }
 }
