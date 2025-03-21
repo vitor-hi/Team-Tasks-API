@@ -1,0 +1,1 @@
+ALTER TABLE team_task ADD COLUMN categories VARCHAR(255) NOT NULL

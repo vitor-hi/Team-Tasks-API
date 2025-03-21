@@ -1,5 +1,6 @@
 package com.example.team_tasks.controller;
 
+import com.example.team_tasks.model.task.CategoriesDTO;
 import com.example.team_tasks.model.task.TeamTask;
 import com.example.team_tasks.model.user.PrioritiesDTO;
 import com.example.team_tasks.model.user.UpdateTaskStatusDTO;
@@ -58,4 +59,11 @@ public class TeamTaskController {
         TeamTask priorities = teamTaskService.setPriorities(id, prioritiesDTO.getPriorities());
         return ResponseEntity.ok(priorities);
     }
+
+    @PutMapping("/{id}/categories")
+    public ResponseEntity<TeamTask> setCategories(@PathVariable Long id, @RequestBody @Valid CategoriesDTO categoriesDTO) {
+        TeamTask categories = teamTaskService.setCategories(id, categoriesDTO.getCategories());
+        return ResponseEntity.ok(categories);
+    }
+
 }
