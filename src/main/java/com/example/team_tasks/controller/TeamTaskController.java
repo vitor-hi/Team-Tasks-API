@@ -1,6 +1,6 @@
 package com.example.team_tasks.controller;
 
-import com.example.team_tasks.model.task.CategoriesDTO;
+import com.example.team_tasks.model.user.CategoriesDTO;
 import com.example.team_tasks.model.task.TeamTask;
 import com.example.team_tasks.model.user.PrioritiesDTO;
 import com.example.team_tasks.model.user.UpdateTaskStatusDTO;
@@ -35,16 +35,15 @@ public class TeamTaskController {
     @PutMapping("/{id}")
     public ResponseEntity<TeamTask> updateTeamTask(@PathVariable Long id, @RequestBody TeamTask teamTaskDetails) {
         TeamTask updatedTask = teamTaskService.updateTeamTask(id, teamTaskDetails);
-
         return ResponseEntity.ok(updatedTask);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Optional<TeamTask>> deleteTeamTask(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTeamTask(@PathVariable Long id) {
         Optional<TeamTask> taskDeleted = teamTaskService.getTeamTaskById(id);
         teamTaskService.deleteTeamTask(id);
 
-        return ResponseEntity.ok(taskDeleted);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}/status")

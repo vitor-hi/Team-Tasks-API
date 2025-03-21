@@ -1,4 +1,4 @@
-package com.example.team_tasks.model.task;
+package com.example.team_tasks.model.user;
 
 import com.example.team_tasks.model.Categories;
 import jakarta.validation.constraints.NotNull;
